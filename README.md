@@ -3,10 +3,14 @@ Autofac bootstrap for Umbraco websites
 
 This will auto register all classes that ends with "Controller", "Service" and "Repository". UmbracoDatabase, UmbracoContext, and UmbracoHelper are also registered.
 
-1. Create a class on your Umbraco app and inherit from IApplicationEventHandler.
-2. Paste the following code":
+1. Install Autofac from NuGet: Install-Package Autofac
+2. Create a class on your Umbraco app and inherit from IApplicationEventHandler.
+3. Paste the following code":
 
 ```cs
+
+using MBran.Autofac;
+using Umbraco.Core;
 
 public class AutofacEventHandler : IApplicationEventHandler
 {
@@ -23,6 +27,8 @@ public class AutofacEventHandler : IApplicationEventHandler
 To register your own services, create an Autofac Module. For example:
 
 ```cs
+
+using Autofac;
 
 public class RegisterUmbraco : Module
 {
