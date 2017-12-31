@@ -10,7 +10,8 @@ This will auto register all classes that ends with "Controller", "Service" and "
 
 public class AutofacEventHandler : IApplicationEventHandler
 {
-    public void OnApplicationInitialized(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
+    public void OnApplicationInitialized(UmbracoApplicationBase umbracoApplication, 
+        ApplicationContext applicationContext)
     {
         var builder = IoCBuilder.Instance.GetBuilder(applicationContext);
         builder.BuildContainer();
