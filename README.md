@@ -1,5 +1,7 @@
 # mbran-umbraco-autofac
-Autofac bootstrap for Umbraco websites
+Autofac bootstrap for Umbraco websites. 
+
+Install through Nuget: Install-Package MBran.Autofac
 
 This will auto register all classes that ends with "Controller", "Service" and "Repository". UmbracoDatabase, UmbracoContext, and UmbracoHelper are also registered.
 
