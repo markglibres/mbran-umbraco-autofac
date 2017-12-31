@@ -1,9 +1,9 @@
 # mbran-umbraco-autofac
 Autofac bootstrap for Umbraco websites
 
-This will auto register all classes that ends with "Controller", "Service" and "Repository". 
+This will auto register all classes that ends with "Controller", "Service" and "Repository". UmbracoDatabase, UmbracoContext, and UmbracoHelper are also registered.
 
-1. Create a class that inherits from IApplicationEventHandler.
+1. Create a class on your Umbraco app and inherit from IApplicationEventHandler.
 2. Paste the following code":
 
 ```cs
