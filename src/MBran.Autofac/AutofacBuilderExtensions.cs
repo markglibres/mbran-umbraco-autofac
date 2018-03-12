@@ -16,10 +16,10 @@ namespace MBran.Autofac
         public static ContainerBuilder RegisterAssemblies(this ContainerBuilder builder)
         {
             var assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>();
+            builder.RegisterUmbracoControllers();
+            
             foreach (var assembly in assemblies)
             {
-                builder.RegisterControllers(assembly);
-                builder.RegisterApiControllers(assembly);
                 builder.RegisterCustomControllers(assembly)
                     .RegisterServices(assembly)
                     .RegisterRepositories(assembly);
@@ -28,12 +28,17 @@ namespace MBran.Autofac
             
             return builder;
         }
-
-        public static ContainerBuilder RegisterCustomControllers(this ContainerBuilder builder, Assembly executingAssembly)
+        
+        public static ContainerBuilder RegisterUmbracoControllers(this ContainerBuilder builder)
         {
             builder.RegisterControllers(typeof(UmbracoApplication).Assembly);
             builder.RegisterApiControllers(typeof(UmbracoApplication).Assembly);
 
+            return builder;
+        }
+
+        public static ContainerBuilder RegisterCustomControllers(this ContainerBuilder builder, Assembly executingAssembly)
+        {
             builder.RegisterAssemblyTypes(executingAssembly)
                 .Where(c => c.Name.EndsWith("Controller", StringComparison.CurrentCultureIgnoreCase))
                 .AsImplementedInterfaces()
